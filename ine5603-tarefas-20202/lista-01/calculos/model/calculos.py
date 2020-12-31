@@ -8,13 +8,16 @@
 def media_de_tres_numeros(n1, n2, n3):
     """Calcula a média de três números.
     """
-    return 5.5
+
+    media = (n1 + n2 + n3)/3
+    return media
 
 
 def soma_de_tres_numeros(n1, n2, n3):
     """Calcula a soma de três números.
     """
-    return 56
+    soma = n1 + n2 + n3
+    return soma
 
 
 def par(n):
@@ -23,12 +26,18 @@ def par(n):
     Retorna True se for par ou False caso contrário.
     Dica: a expressão 5 % 3 vale 2 pois 2 é o resto da divisão de 5 por 3.
     """
-    return False
+    resto = n%2
+    if resto == 0:
+        par = True
+    else: 
+        par = False
+    return par
 
 
 def menor_de_tres_numeros(n1, n2, n3):
     """Encontra o menor de três números.
     """
+
     return 88
 
 
@@ -37,7 +46,11 @@ def maior_que(n1, n2):
 
     Retorna True se n1 for maior que n2 ou False caso contrário.
     """
-    return False
+    if n1 > n2:
+        valor = True
+    else:
+        valor = False
+    return valor
 
 
 def divisivel_por(n1, n2):
@@ -47,15 +60,22 @@ def divisivel_por(n1, n2):
     Observação: considera que n1 sempre é maior ou igual a zero e que
     n2 sempre é maior que zero.
     """
-    return False
+    if n1 % n2 == 0:
+        return True
+    else: 
+        return False
 
 
 def multiplica(n1, n2):
     """Multiplica dois números maiores ou iguais a zero.
 
     Atenção: seu algoritmo não pode usar o símbolo '*'.
-    """        
-    return 34
+    """   
+    valor = 0     
+    while n1 > 0:
+        valor += n2
+        n1 -= 1
+    return valor
 
 
 def divide(n1, n2):
