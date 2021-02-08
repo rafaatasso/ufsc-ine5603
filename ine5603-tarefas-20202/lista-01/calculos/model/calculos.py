@@ -6,18 +6,15 @@
 
 
 def media_de_tres_numeros(n1, n2, n3):
-    """Calcula a média de três números.
-    """
+    """Calcula a média de três números."""
 
-    media = (n1 + n2 + n3)/3
-    return media
+    return (n1 + n2 + n3)/3
 
 
 def soma_de_tres_numeros(n1, n2, n3):
-    """Calcula a soma de três números.
-    """
-    soma = n1 + n2 + n3
-    return soma
+    """Calcula a soma de três números."""
+
+    return n1 + n2 + n3
 
 
 def par(n):
@@ -37,8 +34,13 @@ def par(n):
 def menor_de_tres_numeros(n1, n2, n3):
     """Encontra o menor de três números.
     """
+    menor = n1
+    if n2 < menor:
+        menor = n2
+    if n3 < menor:
+        menor = n3
 
-    return 88
+    return menor
 
 
 def maior_que(n1, n2):
@@ -47,10 +49,9 @@ def maior_que(n1, n2):
     Retorna True se n1 for maior que n2 ou False caso contrário.
     """
     if n1 > n2:
-        valor = True
+        return True
     else:
-        valor = False
-    return valor
+        return False
 
 
 def divisivel_por(n1, n2):
@@ -106,7 +107,6 @@ def divide(n1, n2):
     return resultado
 
 
-
 def bissexto(ano):
     """Verifica se um ano é bissexto.
 
@@ -115,7 +115,7 @@ def bissexto(ano):
     Um ano é bissexto se for divisível por 400 ou então
     se for divisível por 4 e, ao mesmo tempo, não for divisível por 100.
     """
-    return False
+    return True if ano % 4 == 0 and ano % 100 != 0 else False
 
 
 def mdc(n1, n2):
@@ -124,7 +124,16 @@ def mdc(n1, n2):
     Dica: Utilize o Método das Divisões Sucessivas. Veja o método em
     http://www.mundoeducacao.com/matematica/mdc-divisoes-sucessivas.htm
     """
-    return 552
+    numerador = n1 if n1 > n2 else n2
+    denominador = n1 if n1 < n2 else n2
+    resto = numerador % denominador
+
+    while resto > 0:
+        numerador = denominador
+        denominador = resto
+        resto = numerador % denominador
+
+    return denominador
 
 
 def soma_dos_divisores(n):
@@ -132,7 +141,17 @@ def soma_dos_divisores(n):
 
     Dica: a metade de n é n // 2.
     """
-    return 2
+    para_somar = [1, n]
+    i = 2
+
+    while i <= n//2:
+        if n % i == 0:
+            para_somar.append(i)
+        i += 1
+        
+    soma = sum(para_somar)
+
+    return soma
 
 
 def amigos(n1, n2):
@@ -141,7 +160,9 @@ def amigos(n1, n2):
     Retorna True se números são amigos ou False caso contrário.
     Dica: Números Amigos: http://www.matematica.br/historia/namigos.html
     """
-    return False
+    soma1 = soma_dos_divisores(n1)
+    soma2 = soma_dos_divisores(n2)
+    return True if soma1 == soma2 else False
 
 
 def primo(n):
@@ -150,7 +171,8 @@ def primo(n):
     Considera que n sempre é maior que 1.
     Retorna True se n for primo ou False caso contrário.
     """
-    return False
+    soma = soma_dos_divisores(n)
+    return True if soma == n + 1 else False
 
 
 def composto(n):
@@ -159,6 +181,8 @@ def composto(n):
     Considera que n sempre é maior que 1.
     Retorna True se n for número composto ou False caso contrário.
     Definição: um número é composto se possui mais de dois divisores.
+    Conclusão (regra): Todo o número inteiro não-primo e diferente de 1 é composto.
     """
-    return False
+    e_primo = primo(n)
+    return True if e_primo == False and n != 1 else False
 
