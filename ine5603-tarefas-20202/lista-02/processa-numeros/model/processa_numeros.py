@@ -10,8 +10,8 @@ def soma(numeros):
 
     Se a lista estiver vazia então retorna None para indicar
     que o problema não tem solução.
-    """
-    return 22
+    """ 
+    return None if len(numeros) == 0 else sum(numeros) 
 
 
 def em_posicoes_impares(numeros):
@@ -20,7 +20,10 @@ def em_posicoes_impares(numeros):
     Por exemplo, para a lista [20, 30, 40, 50] retorna [30, 50] pois são os
     números que etão nas posições 1 e 3.
     """
-    return []
+    posicoes_impares = []
+    for i in range(1, len(numeros), 2):
+        posicoes_impares.append(numeros[i])
+    return posicoes_impares
 
 
 def primeiro_e_ultimo(numeros):
@@ -29,13 +32,17 @@ def primeiro_e_ultimo(numeros):
     Caso não haja pelo menos dois números retorna None para indicar que
     o problema não tem solução.
     """
-    return [67, 12]
+    return [numeros[0], numeros[-1]] if len(numeros) > 1 else None
 
 
 def conta_ocorrencias(numeros, numero):
     """Conta quantas vezes o numero aparece na lista numeros.
     """
-    return 77
+    contador = 0
+    for i in range(len(numeros)):
+        if numeros[i] == numero:
+            contador = contador + 1
+    return contador
 
 
 def posicao_do_maior(numeros):
@@ -43,7 +50,10 @@ def posicao_do_maior(numeros):
 
     Se a lista está vazia então retorna None.
     """
-    return 12
+    return numeros.index(max(numeros)) if len(numeros) > 0 else None
+    # for i in range(len(numeros)):
+    #     if numeros[i] == max(numeros):
+    #         return i 
 
 
 def maior(numeros):
@@ -52,13 +62,17 @@ def maior(numeros):
     Se a lista estaá vazia (não possui números) então retorna None para
     indicar que o problema não tem solução.
     """
-    return -7
+    return max(numeros) if len(numeros) > 0 else None
 
 
 def qtd_acima_limite(numeros, limite):
     """Conta quantos números na lista são maiores que um número limite.
     """
-    return 23
+    qtd = 0
+    for i in range(len(numeros)):
+        if numeros[i] > limite:
+            qtd = qtd + 1
+    return qtd
 
 
 def media(numeros):

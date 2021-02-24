@@ -1,4 +1,6 @@
 import unittest
+import sys
+sys.path.append("../")
 import model.processa_numeros as pn
 
 
